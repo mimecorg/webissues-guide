@@ -12,17 +12,17 @@ module.exports = {
   themeConfig: {
     logo: '/webissues-logo.png',
     nav: [
-      { text: 'Home', link: '/' },
       { text: 'WebIssues Website', link: 'https://webissues.mimec.org' },
       { text: 'GitHub', link: 'https://github.com/mimecorg/webissues' },
     ],
     sidebar: [
       '/',
-      '/installation.html',
-      '/working-with-issues.html',
-      '/tracking-issues.html',
-      '/system-administration.html',
-      '/customization.html',
-    ]
+      '/installation',
+      '/working-with-issues',
+      '/tracking-issues',
+      '/system-administration',
+      '/customization',
+    ],
+    sidebarDepth: 2
   }
 };
