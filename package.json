@@ -6,9 +6,11 @@
   "private": true,
   "scripts": {
     "build": "vuepress build docs",
-    "dev": "vuepress dev docs"
+    "dev": "vuepress dev docs",
+    "check": "vuepress check-md docs"
   },
   "devDependencies": {
-    "vuepress": "^1.2.0"
+    "vuepress": "^1.2.0",
+    "vuepress-plugin-check-md": "0.0.2"
   }
 }

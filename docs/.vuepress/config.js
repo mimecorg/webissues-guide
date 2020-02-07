@@ -24,5 +24,6 @@ module.exports = {
       '/customization',
     ],
     sidebarDepth: 2
-  }
+  },
+  plugins: [ 'check-md' ]
 };
