@@ -1,14 +1,20 @@
 {
   "name": "webissues-guide",
-  "description": "User guide for the WebIssues team collaboration system",
   "version": "2.0.0-beta.1",
-  "author": "WebIssues Team",
-  "private": true,
+  "description": "User guide for the WebIssues team collaboration system",
   "scripts": {
     "build": "vuepress build docs",
     "dev": "vuepress dev docs",
     "check": "vuepress check-md docs"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mimecorg/webissues-guide.git"
+  },
+  "author": "WebIssues Team",
+  "license": "AGPL-3.0-or-later",
+  "homepage": "https://webissues.mimec.org",
+  "private": true,
   "devDependencies": {
     "vuepress": "^1.2.0",
     "vuepress-plugin-check-md": "0.0.2"
