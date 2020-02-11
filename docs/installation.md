@@ -19,7 +19,7 @@ The following PHP extensions are required:
 * com_dotnet (when using SQL Server)
 * imap (when using email inboxes)
 
-WebIssues supports the [Apache](https://httpd.apache.org/) and [IIS](https://www.iis.net/) web servers and includes the `.htaccess` and `web.config` files which contain the necessary rewrite rules. When installing WebIssues on a different web server, for example [nginx](https://nginx.org/), it must be configured manually.
+WebIssues supports the [Apache](https://httpd.apache.org/) and [IIS](https://www.iis.net/) web servers and includes the `.htaccess` and `web.config` files which contain the necessary rewrite rules. When using Apache, mod_rewrite is required. On IIS, the [URL Rewrite](https://www.iis.net/downloads/microsoft/url-rewrite) extension is required. When installing WebIssues on a different web server, for example [nginx](https://nginx.org/), it must be configured manually.
 
 ## Copying Files
 
