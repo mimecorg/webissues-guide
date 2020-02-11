@@ -127,3 +127,7 @@ Finally, the `[rtl]` block can be used to change the layout of a block of text t
 The markup can be applied to comments, issue descriptions and project descriptions. To disable markup, you can select the **Plain Text** format from the drop-down list below the edit area. You can you the buttons above the edit area to insert markup and to display a preview of the formatted text.
 
 The maximum allowed length of comments and descriptions can be configured by the administrator. It's generally better to attach larger amounts of text, for example log files, as file attachment.
+
+## Filtering Issues
+
+TODO - views, view settings

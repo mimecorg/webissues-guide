@@ -1,5 +1,25 @@
 # System Administration
 
+## Managing Projects and Folders
+
+TODO
+
+## Managing User Accounts
+
+TODO
+
+### Anonymous Access
+
+TODO
+
+### User Registration
+
+TODO
+
+## Email Inboxes
+
+TODO
+
 ## Updating WebIssues
 
 You can update your WebIssues server to the latest version, or upgrade from version 1.0.x or 1.1.x, by following the instructions in this section. 
