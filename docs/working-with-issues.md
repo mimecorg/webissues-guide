@@ -12,13 +12,25 @@ The main user interface of WebIssues consists of three parts:
 
 * The navigation bar contains the **Tools** menu, the user menu and access to some other frequently used actions, like adding a new issue or navigating to an issue, comment or attachment with a specific ID.
 
-* The toolbar allows to select the type of issues to work with. You can filter the list of issues in various ways by selecting one of the pre-defined views, selecting a project and folder, and searching for a part of the name or any other attribute. If you switch between issue types, the last selected view is automatically remembered.
+* The toolbar allows to select the type of issues to work with. You can filter the list of issues in various ways by selecting one of the pre-defined views, selecting a project and folder, and searching for a part of the name or any other attribute.
 
-* The biggest part of the UI is the list of issues. You can display the details of an issue by clicking on it. You can change the sort order by clicking on a column header - the default sort order and the columns which are visible depend on the selected view. If there are more than 50 issues, you can navigate between pages using the buttons below the list.
+* The biggest part of the UI is the list of issues. You can display the details of an issue by clicking on it. To change the sort order, clicking on a column header. Use the buttons below the list to navigate between pages.
+
+## Filtering Issues
+
+Use the **Select Type** drop-down menu in the toolbar to select the type of issues to view. You can only displays issues of one type at a time.
+
+The default view called **All Issues** displays all existing issues of a particular type. A system administrator can define additional public views for each type, and users can create their own personal views. See [Managing Views](./customization.md#managing-views) for more information.
+
+Each view has a different set of columns, default sort order and optional filters. If you switch between issue types, the last selected view is automatically remembered.
+
+By default issues from all projects and folders are displayed. Their location is displayed in the **Location** column in the list. You can use the drop-down menu in the toolbar to display only issues that belong to a selected project. If the project contains multiple folders of the same type, you can also use the drop-down menu to quickly switch between folders.
+
+The toolbar also contains a search bar. By default you can search for issues containing the given text in their name, but you can use the dropdown menu to the left of the search bar to select a different column, including any custom attribute. When searching for a number or date, you must enter an exact value. When searching for text, the "contains" operator is used to perform search.
 
 ## Creating and Editing Issues
 
-In order to add a new issue, select the type of the issue from the blue drop-down list in the toolbar and click the green **Add** button in the navigation bar.
+In order to add a new issue, select the type of the issue from the drop-down list in the toolbar and click the **Add** button in the navigation bar.
 
 Enter the name of the issue and select the project and folder in which the issue will be created. You must be a member of a project, unless you are a system administrator, and it must contain at least one folder of the appropriate type; see [Managing Projects and Folders](./system-administration.md#managing-projects-and-folders) for more information.
 
@@ -46,7 +58,13 @@ To attach a file to an issue, open the issue details and click the **Attach** bu
 
 Attachments are displayed in the issue history. When you click on an image attachment, a preview will be displayed and you will be able to save the image to your computer or open it in a new browser tab. When you click on any other type of file, it will be automatically downloaded to your computer.
 
-Just like issues, all comments and attachments have unique identifiers. You can easily find an issue, comment or attachment using the **Go To** button in the navigation bar. You can also create links to issues, comments and attachments by placing their identifiers in comments, descriptions and the values of attributes.
+### Identifiers
+
+All issues, comments and attachments have unique identifiers, which are numbers preceded by a # sign, for example `#123`.
+
+You can easily find an issue, comment or attachment with the given identifier using the **Go To** button in the navigation bar.
+
+You can also create links to issues, comments and attachments by placing their identifiers in comments, descriptions and the values of attributes.
 
 ### Text with Markup
 
@@ -68,7 +86,7 @@ This text is <code>monospace</code>.<br>
 This is a <a href="http://webissues.mimec.org">link with custom text</a>.</p>
 </div>
 
-URLs and email addresses are automatically converted to links. IDs of issues, comments and attachments, for example `#123`, are also converted to links.
+All URLs, email addresses and identifiers which occur in the text are automatically converted to links.
 
 You can use special tags to apply block level formatting to a fragment of text. The `[list]` tag can be used to create a list:
 
@@ -127,7 +145,3 @@ Finally, the `[rtl]` block can be used to change the layout of a block of text t
 The markup can be applied to comments, issue descriptions and project descriptions. To disable markup, you can select the **Plain Text** format from the drop-down list below the edit area. You can you the buttons above the edit area to insert markup and to display a preview of the formatted text.
 
 The maximum allowed length of comments and descriptions can be configured by the administrator. It's generally better to attach larger amounts of text, for example log files, as file attachment.
-
-## Filtering Issues
-
-TODO - views, view settings
