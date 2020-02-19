@@ -27,7 +27,7 @@ In order to install WebIssues on your server, download the pre-built WebIssues s
 
 Extract the contents of the package and upload all files to the root directory of your web server.
 
-During the setup process, WebIssues will create a `data/` directory in the root directory. Make sure that the web server has appropriate permissions to create this directory. You can also create it manually and grant read/write access to it to the web server.
+During the setup process, WebIssues will create a `data/` subdirectory in the root directory. Make sure that the web server has appropriate permissions to create this directory. You can also create it manually and grant read/write access to it to the web server.
 
 ::: warning
 If you are updating an existing installation of WebIssues server, make sure that you don't delete the `data/` subdirectory, because it contains important files specific to your server instance, including file attachments uploaded to your server.
@@ -47,13 +47,13 @@ Go to the next step and enter the name of your WebIssues server.
 
 To get started quickly you can select the **Install the default set of issue types** option and the setup will create default Bugs, Tasks and Forum issue types. You will be able to customize or delete these types later. You can also choose **Do not install any issue types** if you are planning to configure all your issue types on your own.
 
-Finally, enter the password and optional email address for the administrator account. Verify the configuration and click **Install**. The setup will create the necessary database tables. It will also create a configuration file in the `data/sites/default/` directory of your web server.
+Finally, enter the password and optional email address for the administrator account. Verify the configuration and click **Install**. The setup will create the necessary database tables. It will also create a configuration file in the `data/sites/default/` subdirectory of your web server.
 
 ## Optional Features
 
 ### Sending Emails
 
-By default WebIssues is configured not to send any emails. However, some features, including alert notifications, subscriptions and resetting password are only available when sending emails is enabled. In order to do that, select **Server Settings** from the **Tools** menu, go to **Email Settings** and select **Enable sending emails**. You must also provide the email address which will be used as the sender of all emails.
+By default, WebIssues is configured not to send any emails. However, some features, including alert notifications, subscriptions and resetting password are only available when sending emails is enabled. In order to do that, select **Server Settings** from the **Tools** menu, go to **Email Settings** and select **Enable sending emails**. You must also provide the email address which will be used as the sender of all emails.
 
 If your web server does not allow sending emails directly, you can use an external SMTP server, such as Gmail. Select the **Use custom SMTP server** option and enter the address of the server, port number, user name and password. It is recommended to enable encryption if your SMTP server supports it. You can use the **Test** button to send a test message to the server's own email address to make sure that everything works correctly.
 
@@ -116,7 +116,6 @@ You can change the location of the site subdirectory, which contains the configu
 
 ```ini
 [default]
-match = example.com
 site_dir = /var/data/webissues
 ```
 

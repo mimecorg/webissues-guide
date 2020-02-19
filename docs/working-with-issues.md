@@ -2,19 +2,21 @@
 
 To start using WebIssues, simply open the URL of the WebIssues server in a browser and log in using your login and password. You can use any modern web browser or mobile device to access WebIssues.
 
-If you use WebIssues frequently, you can also install the WebIssues application on your computer. It is available for Windows, Mac and Linux. When you start the application for the first time, you have to enter the URL of the WebIssues server. You can change it later by clicking the **WebIssues Settings** button in the top right corner of the window.
+If you use WebIssues frequently, you can also install the WebIssues application on your computer. It is available for Windows, Mac and Linux; you can download the appropriate version for your operating system from the [WebIssues website](https://webissues.mimec.org/).
+
+When you start the WebIssues application for the first time, you have to enter the URL of the WebIssues server. You can change it later by clicking the **WebIssues Settings** button in the top right corner of the window.
 
 ::: tip
 The functionality and user interface of the WebIssues application is identical to the web application. The application can be slightly faster because it caches details and history of opened issues, at the cost of memory and disk space. The application requires a connection to the internet and doesn't work in offline mode.
 :::
 
-The main user interface of WebIssues consists of three parts:
+The main window of WebIssues consists of three parts:
 
-* The navigation bar contains the **Tools** menu, the user menu and access to some other frequently used actions, like adding a new issue or navigating to an issue, comment or attachment with a specific ID.
+* The navigation bar contains the **Tools** menu, the user menu and some other frequently used actions, like adding a new issue or navigating to an issue, comment or attachment with the given ID.
 
 * The toolbar allows to select the type of issues to work with. You can filter the list of issues in various ways by selecting one of the pre-defined views, selecting a project and folder, and searching for a part of the name or any other attribute.
 
-* The biggest part of the UI is the list of issues. You can display the details of an issue by clicking on it. To change the sort order, clicking on a column header. Use the buttons below the list to navigate between pages.
+* The biggest part of the main window is the list of issues. You can display the details of an issue by clicking on it. To change the sort order, click on a column header. Use the buttons below the list to navigate between pages.
 
 ## Filtering Issues
 
@@ -24,9 +26,9 @@ The default view called **All Issues** displays all existing issues of a particu
 
 Each view has a different set of columns, default sort order and optional filters. If you switch between issue types, the last selected view is automatically remembered.
 
-By default issues from all projects and folders are displayed. Their location is displayed in the **Location** column in the list. You can use the drop-down menu in the toolbar to display only issues that belong to a selected project. If the project contains multiple folders of the same type, you can also use the drop-down menu to quickly switch between folders.
+By default, issues from all projects and folders are displayed. Their location is displayed in the **Location** column in the list. You can use the filter in the toolbar to display only issues that belong to a selected project or a selected folder.
 
-The toolbar also contains a search bar. By default you can search for issues containing the given text in their name, but you can use the dropdown menu to the left of the search bar to select a different column, including any custom attribute. When searching for a number or date, you must enter an exact value. When searching for text, the "contains" operator is used to perform search.
+The toolbar also contains a search bar. You can search for issues containing the given text in their name or any other column, including any custom attribute. You can use the dropdown menu to the left of the search bar to select the search column. You can also search for a number or date, by entering an exact value.
 
 ## Creating and Editing Issues
 
@@ -36,27 +38,29 @@ Enter the name of the issue and select the project and folder in which the issue
 
 Depending on the type of the issue, you may enter some attributes which describe it. Required attributes are marked with an asterisk.
 
-You can also enter a description of the issue. Addresses and IDs will be converted to links. When you select the **Text with Markup** format, simple markup can be used to change the style of text, see the [Text with Markup](#text-with-markup) section below. If you leave the description empty, you can add it later; the description can also be edited or removed at any time.
+You can also enter a description of the issue. Addresses and IDs will be converted to links. When you select the **Text with Markup** format, simple markup can be used to change the style of text, see the [Text with Markup](#text-with-markup) section below. If you leave the description empty, you can add it later; the description can also be edited or removed at any time by the creator of the issue of a project or system administrator.
 
-When you add a new issue, its details will be automatically opened.
+## Issue Details
+
+When you add a new issue, its details will be automatically opened. You can also open the details of an issue by clicking on it in the list of issues.
 
 The issue details window contains the issue name at the top. On the right you can see the properties of the issue, such as its unique ID, type, the project and folder in which the issue is located, and information about the person and date when the issue was created and last modified. Below, the attributes of the issue are displayed.
 
 The main part of the issue details window contains the description and history of the issue. You can use the filter button to switch between full history of changes, comments and attached files. By default, issue history is displayed from oldest to newest entries, but this can be changed by the administrator in the server settings.
 
-Click the **Edit** button at the top of the window to change the name of the issue and the values of its attributes. All changes are automatically recorder in the issue history.
+Click the **Edit** button at the top of the window to change the name of the issue and the values of its attributes. All changes are automatically recorded in the issue history.
 
-The menu available at the top of the window contains other operations, such as cloning, moving and deleting the issue, marking the issue as read or unread, and subscribing or unsubscribing the issue. Only the project or system administrator can move or delete an issue. Subscribing to an issue is only possible when sending emails is enabled by the system administrator; see [Subscriptions](./tracking-issues.md#subscriptions) for more information.
+The menu available at the top of the window contains other operations, such as cloning, moving and deleting the issue, marking the issue as read or unread, and subscribing or unsubscribing the issue. Only the project or system administrator can delete an issue or move it to a different folder. Subscribing to an issue is only possible when sending emails is enabled by the system administrator; see [Subscriptions](./tracking-issues.md#subscriptions) for more information.
 
 ## Comments and Attachments
 
-You can add a comment to an issue and it will be recorded in the issue history. To add a comment, open the issue details and click the **Add** button. The same text formatting can be used as in issue descriptions, see the [Text with Markup](#text-with-markup) section below.
+You can add a comment to an issue and it will be recorded in the issue history. To add a comment, open the issue details and click the **Add** button. The same text formatting can be used as in issue descriptions, see the [Text with Markup](#text-with-markup) section below. To quickly quote an issue description or another comment, use the **Reply** option from the menu available above the comment or description.
 
-To quote an issue description or another comment, use the **Reply** option from the menu available above the comment or description. You can edit or delete your own comment; a project or system administrator can also edit and delete comments made by other users.
+Regular users can edit and delete their own comments; project and system administrators can also edit and delete comments made by other users.
 
 To attach a file to an issue, open the issue details and click the **Attach** button. Select a file to upload and provide an optional description. The maximum allowed size of the attachment can be configured by the administrator in the server settings.
 
-Attachments are displayed in the issue history. When you click on an image attachment, a preview will be displayed and you will be able to save the image to your computer or open it in a new browser tab. When you click on any other type of file, it will be automatically downloaded to your computer.
+Attachments are displayed in the issue history. When you click on an image attachment, a preview is displayed and you can save the image to your computer or open it in a new browser tab. When you click on any other type of file, it is automatically downloaded to your computer.
 
 ### Identifiers
 
@@ -120,9 +124,9 @@ The result is:
 This is a quote.</blockquote>
 </div>
 
-A quote block can contain other blocks, including nested quotes.
+A quote block can contain other blocks, including nested quotes. The title is optional.
 
-The `[code]` block can be used to insert a block of code:
+The `[code]` block can be used to insert a block of code or other pre-formatted text:
 
 ```
 [code js]
@@ -142,6 +146,6 @@ All markup within the code block is ignored. If the language of the code block i
 
 Finally, the `[rtl]` block can be used to change the layout of a block of text to right-to-left.
 
-The markup can be applied to comments, issue descriptions and project descriptions. To disable markup, you can select the **Plain Text** format from the drop-down list below the edit area. You can you the buttons above the edit area to insert markup and to display a preview of the formatted text.
+The markup can be applied to comments, issue descriptions and project descriptions. To disable markup, you can select the **Plain Text** format from the drop-down list below the edit area. You can use the buttons above the edit area to insert markup and to display a preview of the formatted text.
 
-The maximum allowed length of comments and descriptions can be configured by the administrator. It's generally better to attach larger amounts of text, for example log files, as file attachment.
+The maximum allowed length of comments and descriptions can be configured by the administrator. It's generally better to attach larger amounts of text, for example log files, as file attachments.

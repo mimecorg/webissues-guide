@@ -12,11 +12,15 @@ Each issue type can have any number of attributes. The following types of attrib
 
 - **Dropdown list** attributes can store one or more values from a predefined list of items. When **Allow entering custom values** is selected, the user can type any value in addition to selecting one of the predefined items. When **Allow selecting multiple items** is selected, it is possible to select multiple values, separated by commas. You can also specify an optional minimum and maximum length, but only when entering custom values is enabled and selecting multiple items is disabled.
 
-- **Numeric** attributes can store numbers with up to six decimal places. You can specify an optional minimum and maximum length. If **Strip trailing decimal zeros** is enabled, zeros after the decimal point are not displayed.
+- **Numeric** attributes can store an integer or decimal number with up to six decimal places. You can specify an optional minimum and maximum value. If **Strip trailing decimal zeros** is enabled, zeros after the decimal point are not displayed.
 
-- **Date & time** attributes can store a date or date and time. The date and format depends on the language of the system. When **Date and time without time zone conversion** is selected, the displayed date and time will be always the same, regardless of the user's time zone. When **Date and time using local time zone** is selected, the displayed date and time is automatically converted to the user's local time zone.
+- **Date & time** attributes can store a date or date and time. The date and time format depends on the language of the system. When **Date and time without time zone conversion** is selected, the displayed date and time will be always the same, regardless of the user's time zone. When **Date and time using local time zone** is selected, the displayed date and time is automatically converted to the user's local time zone.
+
+  The default value of a Date & time attribute can be set to a special value `[Today]`, which will be replaced with the current date and time when adding an issue. You can also add or subtract a given number of days from the current date, for example `[Today]+3` or `[Today]-7`.
 
 - **User** attributes can store one or more user names. When **Allow selecting only project members** is selected, it is only possible to select users which are members of the project in which the given issue is located. Otherwise all enabled users are available. When **Allow selecting multiple items** is selected, it is possible to select multiple values, separated by commas.
+
+  The default value of a User attribute can be set to `[Me]`, which will be replaced with the name of the current user when adding an issue.
 
 It is possible to rename existing attributes and change their definition, however numeric and date & time attributes cannot be converted to other types. When the attribute definition is changed, existing values of that attribute are not validated until an issue is edited by the user.
 
@@ -30,9 +34,17 @@ The default view is used when **All Issues** is selected from the dropdown list 
 
 A public or personal view defines the visible columns and the default sort order; it can also have one or more filters which specify which issues are visible in the given view. Each filter can be defined using one of the system columns, such as the ID, name, created date, created by, modified date and modified by, or any attribute defined by the administrator. The same column can be used in multiple filters.
 
-The operands of the filter depend on the type of column. In addition to "is equal to" and "is not equal to", for numeric and date attributes operands such as "is less than", "is less than or equal", "is greater than" and "is greater than or equal" are supported. For text attributes, "begins with", "contains", "ends with" and "in list" operands are supported.
+The operands of the filter depend on the type of column. In addition to "is equal to" and "is not equal to", for numeric and date attributes you can select "is less than", "is less than or equal", "is greater than" and "is greater than or equal". For text, dropdown and user attributes, "begins with", "contains", "ends with" and "in list" operands are supported.
+
+When specifying the operand for the filter, you can use the special value `[Today]`, which will be replaced with the current date and time, and optionally add or subtract a given number of days from the current date, for example `[Today]+3` or `[Today]-7`. You can also use the value `[Me]`, which will be replaced with the name of the current user.
+
+The operand can be empty when using the "is equal to" or "is not equal to" operator. If multiple filters are defined, an issue must match all filters in order to be included in the view.
 
 Views can be created, modified, cloned and deleted; a system administrator can also unpublish a public view to convert it to a personal view, or publish a personal view to convert it to a public view.
+
+::: tip
+You can quickly open the view settings for the current issue type using the **View Settings** option in the operations menu in the toolbar above the list of issues.
+:::
 
 ## Server Settings
 
@@ -44,11 +56,11 @@ The **Regional Settings** contain settings such as the language of the server an
 
 It is also possible to customize the format of numbers, date and time. By default these formats depend on the selected language.
 
-The **Email Settings** section contains settings for sending emails. See [Sending Emails](./installation.md#sending-emails) for more information.
+The **Email Settings** section contains settings for related to [Sending Emails](./installation.md#sending-emails).
 
 The **Cron Job** section shows if the cron job is running; see [Cron Job](./installation.md#cron-job) for more information. It also allows changing the schedule of reports; see [Reports](./tracking-issues.md#reports) for more information.
 
-The **Access Settings** contain settings related to anonymous access and user registration. See [Anonymous Access](./system-administration.md#anonymous-access) and [User Registration](./system-administration.md#user-registration) for more details.
+The **Access Settings** contain settings related to [Anonymous Access](./system-administration.md#anonymous-access) and [User Registration](./system-administration.md#user-registration).
 
 **Email Inboxes** are described in the [Email Inboxes](./system-administration.md#email-inboxes) section.
 
