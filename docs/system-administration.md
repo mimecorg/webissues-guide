@@ -102,6 +102,10 @@ Note that the cron job must be running in order for email inboxes to work. See [
 
 You can update your WebIssues server to the latest version, or upgrade from version 1.0.x or 1.1.x, by following the instructions in this section. 
 
+::: warning
+When upgrading from version 1.0.x or 1.1.x, make sure that your environment meets the [requirements](./installation.md#requirements) for version 2.0. In particular, make sure that you have mod_rewrite on Apache or the URL Rewrite extension on IIS, and you copy the rewrite rules from the `.htaccess` or `web.config` file included in the server package.
+:::
+
 Before starting the update, you should back up the database and all files in the web server root directory. You can also disable the web server to prevent other users from accessing the system.
 
 Download the latest pre-built WebIssues server package from the [WebIssues website](https://webissues.mimec.org/).
