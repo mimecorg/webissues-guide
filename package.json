@@ -1,6 +1,6 @@
 {
   "name": "webissues-guide",
-  "version": "2.0.0-beta.1",
+  "version": "2.0.0",
   "description": "User guide for the WebIssues team collaboration system",
   "scripts": {
     "build": "vuepress build docs",
