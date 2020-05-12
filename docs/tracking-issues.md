@@ -30,7 +30,7 @@ When you click on this button, the list of active alerts appears with the number
 
 The status of notifications is automatically refreshed every minute while you are logged in to WebIssues.
 
-In addition, if sending emails is enabled on the server, you will receive email notifications containing all unread changes related to issues matching the alert criteria.
+In addition, if [sending emails](./installation.md#sending-emails) is enabled on the server and the [cron job](./installation.md#cron-job) is running, you will receive email notifications containing all unread changes related to issues matching the alert criteria.
 
 To configure alerts, open the **Tools** menu and select **Alerts**. You can define any number of alerts. For each alert, you must select at least the type of issues. You can also select a public or personal view, a project and a folder to limit the number of issues that trigger the alert.
 
