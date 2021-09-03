@@ -16,7 +16,7 @@
   "homepage": "https://webissues.mimec.org",
   "private": true,
   "devDependencies": {
-    "vuepress": "^1.4.1",
+    "vuepress": "^1.8.2",
     "vuepress-plugin-check-md": "0.0.2"
   }
 }
