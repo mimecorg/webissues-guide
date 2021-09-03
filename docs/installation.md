@@ -55,7 +55,9 @@ Finally, enter the password and optional email address for the administrator acc
 
 By default, WebIssues is configured not to send any emails. However, some features, including alert notifications, subscriptions and resetting password are only available when sending emails is enabled. In order to do that, select **Server Settings** from the **Tools** menu, go to **Email Settings** and select **Enable sending emails**. You must also provide the email address which will be used as the sender of all emails.
 
-If your web server does not allow sending emails directly, you can use an external SMTP server, such as Gmail. Select the **Use custom SMTP server** option and enter the address of the server, port number, user name and password. It is recommended to enable encryption if your SMTP server supports it. You can use the **Test** button to send a test message to the server's own email address to make sure that everything works correctly.
+If your web server does not allow sending emails directly, you can use an external SMTP server, such as Gmail. Select the **Use custom SMTP server** option and enter the address of the server, port number, user name and password. It is recommended to enable encryption if your SMTP server supports it. You can use the **Test** button to send a test message to the server's own email address to make sure that everything works correctly. If there is a problem, you can check the WebIssues event log for the error details.
+
+In some cases, additional information may be necessary and enabling the detailed debug log may be useful. In order to do that, set the `debug_level` option to `DEBUG_SMTP`, as described in [Site Options](./installation.md#site-options) below. You can find more information about troubleshooting SMTP connections in the [PHPMailer documentation](https://github.com/PHPMailer/PHPMailer/wiki/Troubleshooting).
 
 ### Cron Job
 
@@ -112,6 +114,8 @@ In this case, both the `example.com` and `test.com` domains will be mapped to th
 
 ### Site Options
 
+In order to control advanced settings in WebIssues, create a file called `data/site.ini`. This is only recommended for troubleshooting, during development and in advanced configurations such as the multisite mode described above.
+
 You can change the location of the site subdirectory, which contains the configuration file and uploaded attachments, using the `site_dir` option, for example:
 
 ```ini
@@ -138,9 +142,11 @@ debug_info = on
 debug_level = DEBUG_ALL
 ```
 
-This is useful for development and troubleshooting, but these options should not be used on a production server.
+This is useful for development and troubleshooting, but these options should not be used on a production server. By default, the log file is written to the `data/log` directory; you can change the location and file name by configuring the `debug_file` option.
 
-During development, you can also enable loading assets from the development sever:
+You can customize the logging level, for example `DEBUG_ERRORS` only logs PHP errors and warnings, and `DEBUG_SMTP` is useful for diagnosing problems with sending emails.
+
+During development, you can enable loading assets from the development sever:
 
 ```ini
 [default]
