@@ -34,7 +34,7 @@ In addition, if [sending emails](./installation.md#sending-emails) is enabled on
 
 To configure alerts, open the **Tools** menu and select **Alerts**. You can define any number of alerts. For each alert, you must select at least the type of issues. You can also select a public or personal view, a project and a folder to limit the number of issues that trigger the alert.
 
-System administrators can also define public alerts which affect all users. Only members of a project will receive alert notifications for issues which belong to that project.
+System administrators can also define public alerts which affect all users. Administrators can receive alerts related to any project, and regular users can only receive alert notifications for issues which belong to projects that they are members of.
 
 ## Reports
 

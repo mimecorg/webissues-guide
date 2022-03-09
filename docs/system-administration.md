@@ -80,17 +80,19 @@ WebIssues can receive emails from selected email addresses and automatically reg
 
 In order to manage email inboxes, open the **Tools** menu and select **Server Settings**. The list of inboxes is displayed in the **Email Inboxes** section.
 
-To configure a new email inbox, select the protocol used to communicate with the email server; it is recommended to use IMAP if it is supported. Enter the email address of the inbox. In the **Server Communication** section, enter the address of the server and port number, select encryption mode if available, and enter the user name and password if the server requires authentication. You can also specify an optional name of the mailbox from which messages will be retrieved; if not specified the inbox will be used.
+To configure a new email inbox, select the protocol used to communicate with the email server; it is recommended to use IMAP if it is supported. Enter the email address of the inbox. In the **Server Communication** section, enter the address of the server and port number, select encryption mode if available, and enter the user name and password if the server requires authentication. You can also specify an optional name of the mailbox, i.e. the dot-separated path of the folder from which messages will be retrieved, for example `INBOX.Projects`. If not specified, the default `INBOX` mailbox will be used.
 
 Enable the **Do not validate server certificate** option if you are using an encrypted connection to a local server which uses a self-signed certificate. When using an IMAP server, you can also enable the **Leave processed messages on the server**. By default, processed emails will be automatically deleted; if you enable this option, emails will be marked as read and left on the server.
 
-You can use the **Test** button to check the connection to the server.
+You can use the **Test** button to check the connection to the server. If there are any errors, you can check the WebIssues event log for details.
 
 By default only emails sent from addresses associated with WebIssues user accounts will be accepted. When **Accept messages from external users** is enabled, emails from other addresses will be accepted and added in the context of the selected "robot user" account.
 
 In the simplest scenario, all issues are created in a single folder, which can be selected using the **Default folder** option. You can also enable the **Map address extensions to project and folder** option  which makes it possible to determine the target project and folder based on the address used to send the message to the inbox.
 
 The mapping can use an email address extension or an alias. For example, if the inbox address is `service@example.com`, an email sent to either `service+myproject-bugs@example.com` or `service-myproject-bugs@example.com` will be registered as an issue in the "My Project" project in the "Bugs" folder.
+
+When an email is received, the message subject, sender and recipient and the plaintext content of the email message is added as the issue description. By default, the HTML content and any additional attachments and images are added as separate attachments to the issue. You can change this by setting the **Email format** option to **Save as EML file**; in that case, the entire message is attached to the issue as a single EML file which can be downloaded and opened using any email client.
 
 When the **Send responses when issues are created** option is enabled, a confirmation message is sent to the sender when a new issue is registered through the inbox. By responding to this message, additional comments and attachments can be created.
 
