@@ -84,7 +84,9 @@ To configure a new email inbox, select the protocol used to communicate with the
 
 Enable the **Do not validate server certificate** option if you are using an encrypted connection to a local server which uses a self-signed certificate. When using an IMAP server, you can also enable the **Leave processed messages on the server**. By default, processed emails will be automatically deleted; if you enable this option, emails will be marked as read and left on the server.
 
-You can use the **Test** button to check the connection to the server. If there are any errors, you can check the WebIssues event log for details.
+If your mail server supports OAuth, you can select the **Authenticate using OAuth** option; you need to [configure OAuth](./installation.md#oauth-configuration) first to enable that option.
+
+You can use the **Test** button to check the connection to the server. If there are any errors, you can check the WebIssues event log for details. In additional troubleshooting is necessary, you may enable the detailed debug log by setting the `debug_level` option to `DEBUG_MAIL`, as described in the [Site Options](./installation.md#site-options) section.
 
 By default only emails sent from addresses associated with WebIssues user accounts will be accepted. When **Accept messages from external users** is enabled, emails from other addresses will be accepted and added in the context of the selected "robot user" account.
 

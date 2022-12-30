@@ -17,7 +17,6 @@ The following PHP extensions are required:
 * mysqli (when using MySQL)
 * pgsql (when using PostgreSQL)
 * com_dotnet (when using SQL Server)
-* imap (when using email inboxes)
 
 WebIssues supports the [Apache](https://httpd.apache.org/) and [IIS](https://www.iis.net/) web servers and includes the `.htaccess` and `web.config` files which contain the necessary rewrite rules. When using Apache, mod_rewrite is required. On IIS, the [URL Rewrite](https://www.iis.net/downloads/microsoft/url-rewrite) extension is required. When installing WebIssues on a different web server, for example [nginx](https://nginx.org/), it must be configured manually.
 
@@ -55,9 +54,11 @@ Finally, enter the password and optional email address for the administrator acc
 
 By default, WebIssues is configured not to send any emails. However, some features, including alert notifications, subscriptions and resetting password are only available when sending emails is enabled. In order to do that, select **Server Settings** from the **Tools** menu, go to **Email Settings** and select **Enable sending emails**. You must also provide the email address which will be used as the sender of all emails.
 
-If your web server does not allow sending emails directly, you can use an external SMTP server, such as Gmail. Select the **Use custom SMTP server** option and enter the address of the server, port number, user name and password. It is recommended to enable encryption if your SMTP server supports it. You can use the **Test** button to send a test message to the server's own email address to make sure that everything works correctly. If there is a problem, you can check the WebIssues event log for the error details.
+If your web server does not allow sending emails directly, you can use an external SMTP server, such as Gmail or Exchange. Select the **Use custom SMTP server** option and enter the address of the server, port number, user name and password. It is recommended to enable encryption if your SMTP server supports it. If your server supports OAuth, you can select the **Authenticate using OAuth** option; you need to [configure OAuth](./installation.md#oauth-configuration) first to enable that option.
 
-In some cases, additional information may be necessary and enabling the detailed debug log may be useful. In order to do that, set the `debug_level` option to `DEBUG_SMTP`, as described in [Site Options](./installation.md#site-options) below. You can find more information about troubleshooting SMTP connections in the [PHPMailer documentation](https://github.com/PHPMailer/PHPMailer/wiki/Troubleshooting).
+You can use the **Test** button to send a test message to the server's own email address to make sure that everything works correctly. If there is a problem, you can check the WebIssues event log for the error details.
+
+In some cases, additional information may be necessary and enabling the detailed debug log may be useful. In order to do that, set the `debug_level` option to `DEBUG_MAIL`, as described in [Site Options](./installation.md#site-options) below. You can find more information about troubleshooting SMTP connections in the [PHPMailer documentation](https://github.com/PHPMailer/PHPMailer/wiki/Troubleshooting).
 
 ### Cron Job
 
@@ -144,7 +145,7 @@ debug_level = DEBUG_ALL
 
 This is useful for development and troubleshooting, but these options should not be used on a production server. By default, the log file is written to the `data/log` directory; you can change the location and file name by configuring the `debug_file` option.
 
-You can customize the logging level, for example `DEBUG_ERRORS` only logs PHP errors and warnings, and `DEBUG_SMTP` is useful for diagnosing problems with sending emails.
+You can customize the logging level, for example `DEBUG_ERRORS` only logs PHP errors and warnings, and `DEBUG_MAIL` is useful for diagnosing problems with sending and receiving emails.
 
 During development, you can enable loading assets from the development sever:
 
@@ -158,3 +159,50 @@ The development server can be started by running the following command:
 ```bash
 npm run dev:web
 ```
+
+### OAuth Configuration
+
+WebIssues can use OAuth to authenticate connections to any email server that supports it, for both sending and receiving emails. In order to use OAuth, you have to create a file called `oauth.inc.php` and place it in your site directory, usually `data/sites/default`.
+
+The following example shows the OAuth configuration file for receiving emails using an Office 365 Exchange server:
+
+```php
+<?php
+
+if ( !defined( 'WI_VERSION' ) ) die( -1 );
+
+$oauth[ 'clientId' ] = '[CLIENT_ID]';
+$oauth[ 'clientSecret' ] = '[CLIENT_SECRET]';
+
+$oauth[ 'redirectUri' ] = 'https://www.example.com/client/oauth.php';
+
+$oauth[ 'urlAuthorize' ] = 'https://login.microsoftonline.com/[TENANT_ID]/oauth2/v2.0/authorize';
+$oauth[ 'urlAccessToken' ] = 'https://login.microsoftonline.com/[TENANT_ID]/oauth2/v2.0/token';
+$oauth[ 'urlResourceOwnerDetails' ] = '';
+
+$oauth[ 'scopes' ] = 'openid profile email offline_access https://outlook.office365.com/IMAP.AccessAsUser.All';
+```
+
+In order to use OAuth with an Exchange server, you must register your WebIssues server as an application in Azure AD, as described in the [Exchange server documentation](https://learn.microsoft.com/en-us/exchange/client-developer/legacy-protocols/how-to-authenticate-an-imap-pop-smtp-application-by-using-oauth).
+
+When creating the application, enter the Redirect URI using the address of your server, for example `https://www.example.com/client/oauth.php`. The same address should be entered in the OAuth configuration file. Take a note of the Application (client) ID and Directory (tenant) ID and put them in the OAuth configuration file in place of `[CLIENT_ID]` and `[TENANT_ID]`. For a multitenant application, enter `common` instead of the tenant ID.
+
+Go to the **Certificates & secrets** section and create a client secret. Take a note of the secret's value and enter it in place of `[CLIENT_SECRET]`.
+
+Go to the **API permissions** section and add the appropriate permissions for the application:
+
+ - From Microsoft Graph, choose **Delegated permissions** and select `openid`, `profile`, `email`, `offline_access` and `IMAP.AccessAsUser.All` (for receiving emails). For sending emails, select `SMTP.Send`.
+
+ - From Office 365 Exchange Online, choose **Application permissions** and select `IMAP.AccessAsApp` (for receiving emails) and/or `Mail.Send` (for sending emails).
+
+Then, choose the **Grant admin consent** option for all the configured permissions.
+
+In order to use OAuth for sending emails using an Exchange server, add the `https://outlook.office365.com/SMTP.Send` scope to the `oauth.inc.php` configuration file.
+
+If you are using a different email server, refer to its documentation to learn how to register the application and obtain the client ID, client secret, URLs and scopes that should be entered in the configuration file.
+
+After uploading the `oauth.inc.php` file to the WebIssues server, a new section called **OAuth Configuration** should appear in the **Server Settings** window. Click **Edit** and then **Authenticate**, log in to your Azure AD account and grant permissions for the registered application. WebIssues should then receive an access token that can be used to send and/or receive emails via the Exchange server.
+
+In order to use OAuth for receiving emails, select the email inbox in the **Server Settings** window and enable the **Authenticate using OAuth** option.
+
+To use OAuth for sending emails, go to **Email Settings** and enable the **Authenticate using OAuth** option.
